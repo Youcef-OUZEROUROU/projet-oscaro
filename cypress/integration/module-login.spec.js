@@ -9,19 +9,19 @@ describe('Téster le login oscaro', () => {
     it('testé le champ email vide', () => {
         cy.get('#login/email').type(' ').should('have.value',' ')
         cy.get('#login/password').type('Youcef87@').should('have.value','Youcef87@') 
-         cy.get('#login/remember-me').check({force:true}) 
+         cy.get('#login/remember-me').check({force:true}).should('be.checked') 
          cy.get('.form-message').should('contain','Le champ "Email" est obligatoire')
     })
     it('testé le champ email que avec des chiffre', () => {
         cy.get('#login/email').type('654654').should('have.value','654654')
         cy.get('#login/password').type('Youcef87@').should('have.value','Youcef87@')
-         cy.get('#login/remember-me').check({force:true}) 
+         cy.get('#login/remember-me').check({force:true}).should('be.checked') 
          cy.get('.form-message').should('contain','Adresse e-mail incorrecte')
     })
     it('testé le champ email que avec des lettres', () => {
         cy.get('#login/email').type('klfdlflkdf').should('have.value','klfdlflkdf')
         cy.get('#login/password').type('Youcef87@').should('have.value','Youcef87@')
-         cy.get('#login/remember-me').check({force:true}) 
+         cy.get('#login/remember-me').check({force:true}).should('be.checked')
          cy.get('.form-message').should('contain','Adresse e-mail incorrecte')
        
     })
@@ -65,7 +65,7 @@ describe('Téster le login oscaro', () => {
     it('testé le champ email correct avec un password correct', () => {
         cy.get('#login/email').type('youcef@yopmail.com').should('have.value','youcef@yopmail.com')
         cy.get('#login/password').type('Youcef87@').should('have.value','Youcef87@')
-         cy.get('#login/remember-me').check({force:true}) 
+         cy.get('#login/remember-me').check({force:true}).should('be.checked')
          cy.url().should('contain','/account/home')
        
     })
